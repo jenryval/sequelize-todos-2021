@@ -33,6 +33,10 @@ input.new-item:focus {
   width: 100%;
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
 @media (max-width: 991.98px) {
   .new-item .btn {
     margin-top: 10px;

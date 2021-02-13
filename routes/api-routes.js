@@ -15,14 +15,24 @@ try{
 router.post('/api/todos', async (req,res) => {
 try {
     await db.Todo.create(req.body)
-    res.sendStatus(200)
+    res.status(200).send()
 }catch(err){
  res.status(500).send(err)
 }
 })
 
 
-// router.put()
+router.put('/api/todos/:id', async (req,res) => {
+    try {
+        const id = req.params.id
+        await db.Todo.update({
+            where: { id }
+        })
+        res.status(200).send()
+    }catch(err){
+     res.status(500).send(err)
+    }
+})
 
 
 
@@ -32,7 +42,7 @@ router.delete('/api/todos/:id', async (req,res) => {
     await db.Todo.destroy({
         where: { id }
     })
-    res.sendStatus(200)
+    res.status(200).send()
     }catch(err){
     res.status(500).send(err)
     }
